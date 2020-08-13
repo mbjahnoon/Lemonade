@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30225.117
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "lemonadeWebApi", "lemonadeWebApi\lemonadeWebApi.csproj", "{DF26EADB-3038-43B7-84D6-A7D1A53BF62E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LemoTest", "LemoTest\LemoTest.csproj", "{104CCD72-AB74-44FD-8421-EC3160D80975}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{DF26EADB-3038-43B7-84D6-A7D1A53BF62E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DF26EADB-3038-43B7-84D6-A7D1A53BF62E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DF26EADB-3038-43B7-84D6-A7D1A53BF62E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DF26EADB-3038-43B7-84D6-A7D1A53BF62E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{104CCD72-AB74-44FD-8421-EC3160D80975}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{104CCD72-AB74-44FD-8421-EC3160D80975}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{104CCD72-AB74-44FD-8421-EC3160D80975}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{104CCD72-AB74-44FD-8421-EC3160D80975}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {A8800D5E-1639-48C5-A872-504AC9C2AC1C}
+	EndGlobalSection
+EndGlobal
