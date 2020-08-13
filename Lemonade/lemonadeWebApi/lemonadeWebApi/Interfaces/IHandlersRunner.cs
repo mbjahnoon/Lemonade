@@ -8,6 +8,6 @@ namespace lemonadeWebApi.Interfaces
     public interface IHandlersRunner:IDisposable
     {
         Task<bool> IsAllHandlersFinished();
-        void AddHandlerAndRun(IStreamHandler handler);
+        Task AddHandlerAndRun(IStreamHandler handler);
     }
 }

@@ -110,7 +110,7 @@ namespace lemonadeWebApi.Services
             // but assuming all words are valid words this is a very rare case and we get good performance.
             try
             {
-                await aggragators[Char.ToUpper(word[0])].AddWord(word.ToString());
+                await aggragators[Char.ToUpper(word[0])].AddWord(word);
             }
             catch (Exception ex1)
             {
@@ -133,17 +133,6 @@ namespace lemonadeWebApi.Services
             foreach (var c in buffer)
             {
                 _bufferBlock.SendAsync(c);
-                //if (LemonadeConsts.PunctuationChars.Any(c.Equals))//todo add all the word spliters
-                //{
-                //    var word = _builder.ToString();
-                //    _builder.Clear();
-                //    if (word.Length > 1)
-                //    {
-                //        MoveWordToOpenAggragator(word);
-                //    }
-                //    continue;
-                //}
-                //_builder.Append(c);
             }
         }
 

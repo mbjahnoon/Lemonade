@@ -25,7 +25,7 @@ namespace lemonadeWebApi.Services
             }
         }
 
-        public async void AddHandlerAndRun(IStreamHandler handler)
+        public async Task AddHandlerAndRun(IStreamHandler handler)
         {
             Interlocked.Increment(ref _numOfhandlersRunning);
             _handlers.Add(handler);

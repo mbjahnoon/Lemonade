@@ -17,7 +17,7 @@ namespace lemonadeWebApi.Aggragators
         private ConcurrentDictionary<string, int> _trailerWordsAggragator;
         private readonly IArchiver _archiver;
         private readonly string _type;
-        private Semaphore _semaphore;
+        private SemaphoreSlim _semaphore;
         private bool isCurrentlySavingData;
         public WordsAggragator(IArchiver archiver, string type, int maxCachedSize = 1024*1024)
         {
@@ -26,7 +26,7 @@ namespace lemonadeWebApi.Aggragators
             _wordsAggragator = new ConcurrentDictionary<string, int>();
             _maxAllowedCacheSizeMB = maxCachedSize;
             _type = type;
-            _semaphore = new Semaphore(1,1);
+            _semaphore = new SemaphoreSlim(1,1);
         }
 
         //TODO need to fix for case where all input start with same letter
@@ -34,7 +34,7 @@ namespace lemonadeWebApi.Aggragators
         {
             try
             {
-                _semaphore.WaitOne();
+                await _semaphore.WaitAsync();
                 _currentCachingSize += word.Length;
                 var str = word.ToLower();
                 AggregateWord(str, isCurrentlySavingData ? _trailerWordsAggragator : _wordsAggragator);
@@ -58,8 +58,9 @@ namespace lemonadeWebApi.Aggragators
         public async Task StartSaveAsync()
         {
             isCurrentlySavingData = true;
-            var words = _wordsAggragator.Select(kvp => new WordDto {Word = kvp.Key, Count = kvp.Value});
+            var words = _wordsAggragator.Select(kvp => new WordDto {Word = kvp.Key, Count = kvp.Value}).ToList();
             await _archiver.AddOrUpdateWordAsync(_type,words);
+            _wordsAggragator.Clear();
             var memoryUsed = CopyDictionary(_trailerWordsAggragator, _wordsAggragator);
              _currentCachingSize =  memoryUsed;
             isCurrentlySavingData = false;

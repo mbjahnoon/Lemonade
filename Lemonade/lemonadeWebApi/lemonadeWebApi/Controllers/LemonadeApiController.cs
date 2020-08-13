@@ -50,19 +50,19 @@ clear - > clear database";
         [HttpGet("byUrl/{Url}")]
         public bool GetByUrl(string Url)
         {
-            _runner.AddHandlerAndRun(_factory.CreateUrlHandler(Url));
+            _runner.AddHandlerAndRun(_factory.CreateUrlHandler(Url)).ConfigureAwait(false);
             return true;
         }
         [HttpPost("fromString")]
         public bool GetFromString([FromBody]string str)
         {
-            _runner.AddHandlerAndRun(_factory.CreateStringHandler(str));
+            _runner.AddHandlerAndRun(_factory.CreateStringHandler(str)).ConfigureAwait(false);
             return true;
         }
         [HttpGet("fromStringGet/{str}")]
         public bool GetFromStringGet( string str)
         {
-            _runner.AddHandlerAndRun(_factory.CreateStringHandler(str));
+            _runner.AddHandlerAndRun(_factory.CreateStringHandler(str)).ConfigureAwait(false);
             return true;
         }
 
